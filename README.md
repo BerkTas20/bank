@@ -2,5 +2,5 @@
 spring boot bank app
 
 Dto convert
-unit test(soon..)
+unit test
 rabbit mq(soon..)
