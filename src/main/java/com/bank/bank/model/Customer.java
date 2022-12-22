@@ -6,10 +6,10 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "customer")
+@NoArgsConstructor
 @Builder
+@Entity
 public class Customer {
 
     @Id
