@@ -35,21 +35,18 @@ public class BankApplication implements CommandLineRunner {
 				.id("123456")
 				.name("Example")
 				.city(City.ISTANBUL)
-				.address("Ev")
 				.dateOfBirth(1990)
 				.build();
 		Customer c2 = Customer.builder()
 				.id("1234")
 				.name("John")
 				.city(City.DENIZLI)
-				.address("Ev")
 				.dateOfBirth(1999)
 				.build();
 		Customer c3 = Customer.builder()
 				.id("123")
 				.name("Michael")
 				.city(City.IZMIR)
-				.address("Ev")
 				.dateOfBirth(1998)
 				.build();
 		customerRepository.saveAll(Arrays.asList(c1,c2,c3));

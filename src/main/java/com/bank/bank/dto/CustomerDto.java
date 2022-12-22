@@ -1,6 +1,7 @@
 package com.bank.bank.dto;
 //hicbirzama veritabanımızdaki bilgileri isteğe cevaben geri dönmeyiz. Ara class olarak dto oluştururuz
 
+import com.bank.bank.model.Address;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,5 +17,5 @@ public class CustomerDto {
     private String name;
     private Integer dateOfBirth;
     private CityDto city;
-    private String address;
+    private Address address;
 }
