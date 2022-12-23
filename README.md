@@ -1,6 +1,6 @@
 # bank
 spring boot bank app
 
-Dto convert
-unit test
+Dto convert,
+unit test,
 rabbit mq(soon..)
