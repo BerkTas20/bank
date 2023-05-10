@@ -94,7 +94,7 @@ public class AccountService {
         });
         return accountOptional.map(accountDtoConverter::convert).orElse(new AccountDto());
     }
-    //para ekleme
+
     public AccountDto addMoney(String id, Double amount){
         Optional<Account>accountOptional = accountRepository.findById(id);
         accountOptional.ifPresent(account -> {
