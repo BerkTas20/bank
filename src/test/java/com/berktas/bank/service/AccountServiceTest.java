@@ -1,19 +1,17 @@
-package com.bank.bank.service;
+package com.berktas.bank.service;
 
-import com.bank.bank.dto.AccountDto;
-import com.bank.bank.dto.AccountDtoConverter;
-import com.bank.bank.dto.CreateAccountRequest;
-import com.bank.bank.model.*;
-import com.bank.bank.repository.AccountRepository;
+import com.berktas.bank.dto.AccountDto;
+import com.berktas.bank.mapper.AccountDtoConverter;
+import com.berktas.bank.controller.requests.CreateAccountRequest;
+import com.berktas.bank.model.*;
+import com.berktas.bank.repository.AccountRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.core.DirectExchange;
 
 public class AccountServiceTest {
     @Mock
@@ -25,16 +23,24 @@ public class AccountServiceTest {
     @Mock
     private AccountDtoConverter accountDtoConverter;
 
+    private DirectExchange directExchange;
+
+    private AmqpTemplate rabbitTemplate;
+
     @Before
     public void setUp() throws Exception {
         accountRepository = Mockito.mock(AccountRepository.class);
         customerService = Mockito.mock(CustomerService.class);
         accountDtoConverter = Mockito.mock(AccountDtoConverter.class);
+        directExchange = Mockito.mock(DirectExchange.class);
+        rabbitTemplate = Mockito.mock(AmqpTemplate.class);
 
-        accountService = new AccountService(accountRepository, customerService, accountDtoConverter);
+        accountService = new AccountService(accountRepository,
+                customerService,
+                accountDtoConverter, rabbitTemplate, directExchange);
     }
 
-    @Test //senaryo ismi
+    @Test
     public void whenCreateAccountCalledWithValidRequest_itShouldReturnValidAccountDto(){
         CreateAccountRequest createAccountRequest = generateCreateAccountRequest();
         Customer customer = generateCustomer();

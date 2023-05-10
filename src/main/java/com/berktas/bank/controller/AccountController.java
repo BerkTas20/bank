@@ -1,22 +1,24 @@
-package com.bank.bank.controller;
+package com.berktas.bank.controller;
 
-import com.bank.bank.dto.AccountDto;
-import com.bank.bank.dto.CreateAccountRequest;
-import com.bank.bank.dto.MoneyTransferRequest;
-import com.bank.bank.dto.UpdateAccountRequest;
-import com.bank.bank.service.AccountService;
-import lombok.RequiredArgsConstructor;
+import com.berktas.bank.dto.AccountDto;
+import com.berktas.bank.controller.requests.CreateAccountRequest;
+import com.berktas.bank.controller.requests.MoneyTransferRequest;
+import com.berktas.bank.controller.requests.UpdateAccountRequest;
+import com.berktas.bank.service.AccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/accounts")
-@RequiredArgsConstructor
+@RequestMapping("/accounts")
 public class AccountController {
 
     private final AccountService accountService;
+
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     @GetMapping
     public ResponseEntity<List<AccountDto>> getAllAccounts(){
@@ -49,11 +51,10 @@ public class AccountController {
         return ResponseEntity.ok(accountService.addMoney(id,amount));
     }
 
-
+    @PutMapping("/transfer")
     public ResponseEntity<String> transferMoney(@RequestBody MoneyTransferRequest moneyTransferRequest){
         accountService.transferMoney(moneyTransferRequest);
         return ResponseEntity.ok("İşleminiz başarıyla alındı!");
     }
 }
 
-//HTTP PATCH Nedir = Bir modelin sadece bir alanını değiştireceksin.Bir güncelle işlemi
