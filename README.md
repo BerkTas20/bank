@@ -1,7 +1,8 @@
 # bank
 spring boot bank app
 
-- About Project
+- About Project:
+
 There is a relationship between Account and Customer.
 There are also withdrawals and additions.
 A customer can send money to another customer.
