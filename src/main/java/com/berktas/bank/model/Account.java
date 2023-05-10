@@ -1,4 +1,4 @@
-package com.bank.bank.model;
+package com.berktas.bank.model;
 
 import lombok.*;
 
