@@ -7,9 +7,9 @@ There are also withdrawals and additions.
 A customer can send money to another customer.
 
 TECHNOLOGİES:
-JAVA 17
-SPRİNG BOOT 2.7
-MONOLİTHİC
-RABBİTMQ
-UNİT TEST
+- JAVA 17
+- SPRİNG BOOT 2.7
+- MONOLİTHİC
+- RABBİTMQ
+- UNİT TEST
 
